@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pesquisa de Satisfação</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
+<x-layout method="GET">
 
-<body>
-    <div id="app" class="app">
-        <div class="wave-1">
-            <div class="wave-2">
-                <div class="wave-3">
-                    <h1>Pesquisa de Satisfação</h1>
-                </div>
-            </div>
-        </div>
+    <label class="form-question" for="pergunta">Por favor, selecione uma unidade para iniciar o sistema:</label>
+    <div class="form-search">
+        <input type="text" class="input-search" name="searchUnidade">
+        <button type="submit" class="submit-search">
+            <img class="find" src="{{ asset('assets/img/find.png') }}">
+        </button>
+    </div>
+    <div class="form-result">
+        @foreach ($unidades as $unidade)
+            <a class="unidade" href="{{ route('feedback.create', $unidade->id) }}">{{ $unidade->no_unidade }}</a>
+        @endforeach
     </div>
 
-</body>
-</html>
+</x-layout>
